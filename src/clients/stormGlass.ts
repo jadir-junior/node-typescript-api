@@ -61,9 +61,7 @@ export class StormGlass {
       const response = await this.request.get<StormGlassForecastResponse>(
         `${stormGlassRosourceConfig.get('apiUrl')}/weather/point?params=${
           this.stormGlassAPIParams
-        }&source=${
-          this.stormGlassAPISource
-        }&end=1592113802&lat=${lat}&lng=${lng}`,
+        }&source=${this.stormGlassAPISource}&lat=${lat}&lng=${lng}`,
         {
           headers: {
             Authorization: stormGlassRosourceConfig.get('apiToken'),
