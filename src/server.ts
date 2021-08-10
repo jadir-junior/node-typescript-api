@@ -7,6 +7,7 @@ import express, { Application } from 'express';
 import { BeachesController } from './controllers/beaches';
 import { ForecastController } from './controllers/forecast';
 import { Server } from '@overnightjs/core';
+import { UsersController } from './controllers/users';
 
 export class SetupServer extends Server {
   constructor(private port = 3000) {
@@ -27,7 +28,12 @@ export class SetupServer extends Server {
   private setupControllers(): void {
     const forecastController = new ForecastController();
     const beachesController = new BeachesController();
-    this.addControllers([forecastController, beachesController]);
+    const usersController = new UsersController();
+    this.addControllers([
+      forecastController,
+      beachesController,
+      usersController,
+    ]);
   }
 
   public getApp(): Application {
