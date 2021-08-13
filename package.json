@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Typescript Node.js API",
   "main": "index.js",
+  "engines": {
+    "yarn": "1.x"
+  },
   "scripts": {
     "build": "tsc",
     "start": "yarn build && node dist/src/index.js",
