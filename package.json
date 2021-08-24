@@ -3,13 +3,9 @@
   "version": "1.0.0",
   "description": "Typescript Node.js API",
   "main": "index.js",
-  "engines": {
-    "yarn": "1.x"
-  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/src/index.js",
-    "postinstall": "yarn run build",
     "start:dev": "ts-node-dev 'src/index.ts'",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
@@ -18,6 +14,10 @@
     "test:unit": "jest",
     "test:functional": "jest --projects ./test --runInBand",
     "test": "yarn test:unit && yarn test:functional"
+  },
+  "postinstall": "yarn build",
+  "engines": {
+    "node": "12"
   },
   "keywords": [
     "nodejs",
