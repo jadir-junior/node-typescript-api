@@ -8,6 +8,7 @@ import { BeachesController } from './controllers/beaches';
 import { ForecastController } from './controllers/forecast';
 import { Server } from '@overnightjs/core';
 import { UsersController } from './controllers/users';
+import logger from './logger';
 
 export class SetupServer extends Server {
   constructor(private port = 3000) {
@@ -50,7 +51,7 @@ export class SetupServer extends Server {
 
   public start(): void {
     this.app.listen(this.port, () => {
-      console.info('Server listing on port: ' + this.port);
+      logger.info('Server listing on port: ' + this.port);
     });
   }
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/src/index.js",
-    "start:dev": "ts-node-dev 'src/index.ts'",
+    "start:local": "ts-node-dev --transpile-only 'src/index.ts' | pino-pretty -c",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
@@ -17,7 +17,7 @@
   },
   "postinstall": "yarn build",
   "engines": {
-    "node": "12"
+    "node": "14.x"
   },
   "keywords": [
     "nodejs",
@@ -37,12 +37,14 @@
     "@types/mongoose": "^5.11.97",
     "@types/nock": "^11.1.0",
     "@types/node": "14.17.6",
+    "@types/pino": "^6.3.11",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
     "eslint": "^7.31.0",
     "jest": "^27.0.6",
     "nock": "^13.1.1",
+    "pino-pretty": "^6.0.0",
     "prettier": "^2.3.2",
     "supertest": "^6.1.4",
     "ts-jest": "^27.0.4",
@@ -58,6 +60,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
-    "mongoose": "^5.13.5"
+    "mongoose": "^5.13.5",
+    "pino": "^6.13.1"
   }
 }

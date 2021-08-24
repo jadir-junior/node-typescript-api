@@ -13,6 +13,10 @@
         "apiUrl": "https://api.stormglass.io/v2",
         "apiToken": "870e6b44-f942-11eb-9f40-0242ac130002-870e6bbc-f942-11eb-9f40-0242ac130002"
       }
+    },
+    "logger": {
+      "enabled": true,
+      "level": "info"
     }
   }
 }
