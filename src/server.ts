@@ -9,6 +9,8 @@ import { BeachesController } from './controllers/beaches';
 import { ForecastController } from './controllers/forecast';
 import { Server } from '@overnightjs/core';
 import { UsersController } from './controllers/users';
+import cors from 'cors';
+import expressPino from 'express-pino-logger';
 import logger from './logger';
 
 export class SetupServer extends Server {
@@ -25,8 +27,17 @@ export class SetupServer extends Server {
   }
 
   private setupExpress(): void {
-    // bodyParser depreceted
     this.app.use(express.json());
+    this.app.use(
+      expressPino({
+        logger,
+      })
+    );
+    this.app.use(
+      cors({
+        origin: '*',
+      })
+    );
   }
 
   private setupControllers(): void {
