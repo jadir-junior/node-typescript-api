@@ -1,6 +1,7 @@
 import './util/module-alias';
 
 import * as database from '@src/database';
+import * as http from 'http';
 
 import express, { Application } from 'express';
 
@@ -11,6 +12,8 @@ import { UsersController } from './controllers/users';
 import logger from './logger';
 
 export class SetupServer extends Server {
+  private server?: http.Server;
+
   constructor(private port = 3000) {
     super();
   }
@@ -47,10 +50,21 @@ export class SetupServer extends Server {
 
   public async close(): Promise<void> {
     await database.close();
+    if (this.server) {
+      await new Promise((resolve, reject) => {
+        this.server?.close((err) => {
+          if (err) {
+            return reject(err);
+          }
+
+          resolve(true);
+        });
+      });
+    }
   }
 
   public start(): void {
-    this.app.listen(this.port, () => {
+    this.server = this.app.listen(this.port, () => {
       logger.info('Server listing on port: ' + this.port);
     });
   }
