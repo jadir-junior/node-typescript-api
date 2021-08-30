@@ -1,4 +1,4 @@
-import { Beach, BeachPosition } from '@src/models/beach';
+import { Beach, GeoPosition } from '@src/models/beach';
 
 import AuthService from '@src/services/auth';
 import { User } from '@src/models/user';
@@ -25,7 +25,7 @@ describe('Beach forecast functional testes', () => {
       lat: -33.792726,
       lng: 151.289824,
       name: 'Manly',
-      position: BeachPosition.E,
+      position: GeoPosition.E,
       user: user.id,
     };
     await new Beach(defaultBeach).save();
